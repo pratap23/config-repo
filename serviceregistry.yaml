@@ -1,9 +1,39 @@
 server:
   port: 8761
 
-spring:
-  application:
-    name: serviceregistry
 
-  config:
-      import: optional:configserver:http://localhost:8070
+eureka:
+
+  client:
+
+    register-with-eureka:
+      false
+
+    fetch-registry:
+      false
+
+
+instance:
+
+  hostname:
+    localhost
+
+
+management:
+
+  endpoints:
+
+    web:
+
+      exposure:
+
+        include:
+          "*"
+
+
+endpoint:
+
+  health:
+
+    show-details:
+      always
