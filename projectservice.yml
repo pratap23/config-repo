@@ -1,0 +1,36 @@
+server:
+  port: 8084
+
+spring:
+
+  datasource:
+
+    url:
+      jdbc:postgresql://localhost:5432/project_db
+
+    username:
+      postgres
+
+    password:
+      postgres
+
+  kafka:
+
+    bootstrap-servers:
+      localhost:9092
+
+  jpa:
+
+    hibernate:
+
+      ddl-auto:
+        update
+
+eureka:
+
+  client:
+
+    service-url:
+
+      defaultZone:
+        http://localhost:8761/eureka

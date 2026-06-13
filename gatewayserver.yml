@@ -1,0 +1,103 @@
+server:
+  port: 8080
+
+spring:
+
+  cloud:
+
+    gateway:
+
+      discovery:
+
+        locator:
+
+          enabled: true
+
+          lower-case-service-id: true
+
+      routes:
+
+        - id: auth
+
+          uri:
+            lb://AUTHSERVICE
+
+          predicates:
+
+            - Path=/auth/**
+
+
+        - id: users
+
+          uri:
+            lb://USERSERVICE
+
+          predicates:
+
+            - Path=/users/**
+
+        - id: workspace
+
+          uri:
+            lb://WORKSPACESERVICE
+
+          predicates:
+
+            - Path=/workspaces/**
+
+        - id: projects
+
+          uri:
+            lb://PROJECTSERVICE
+
+          predicates:
+
+            - Path=/projects/**
+
+        - id: sprints
+
+          uri:
+            lb://SPRINTSERVICE
+
+          predicates:
+
+            - Path=/sprints/**
+
+        - id: tasks
+
+          uri:
+            lb://TASKSERVICE
+
+          predicates:
+
+            - Path=/tasks/**
+
+        - id: notifications
+
+          uri:
+            lb://NOTIFICATIONSERVICE
+
+          predicates:
+
+            - Path=/notifications/**
+
+
+eureka:
+
+  client:
+
+    service-url:
+
+      defaultZone:
+        http://localhost:8761/eureka
+
+
+management:
+
+  endpoints:
+
+    web:
+
+      exposure:
+
+        include: "*"
