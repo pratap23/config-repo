@@ -57,13 +57,12 @@ spring:
           json:
             add:
               type:
-                headers: false
+                headers: true
 
 
     # ---------- CONSUMER ----------
 
     consumer:
-
       group-id:
         userservice-group
 

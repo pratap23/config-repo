@@ -1,20 +1,82 @@
 server:
-  port: 8088
+  port: 8086
+
 
 spring:
 
-  mail:
+  datasource:
 
-    host:
-      smtp.gmail.com
+    url:
+      jdbc:postgresql://localhost:5432/notification_db
 
-    port:
-      587
+    username:
+      postgres
+
+    password:
+      postgres
+
+
+  jpa:
+
+    hibernate:
+
+      ddl-auto:
+        update
+
 
   kafka:
 
     bootstrap-servers:
       localhost:9092
+
+
+    consumer:
+
+      group-id:
+        notification
+
+
+      auto-offset-reset:
+        earliest
+
+
+      key-deserializer:
+        org.springframework.kafka.support.serializer.ErrorHandlingDeserializer
+
+
+      value-deserializer:
+        org.springframework.kafka.support.serializer.ErrorHandlingDeserializer
+
+
+      properties:
+
+        spring:
+
+          deserializer:
+
+            value:
+
+              delegate:
+
+                class:
+
+                  org.springframework.kafka.support.serializer.JsonDeserializer
+
+
+          json:
+
+            trusted:
+
+              packages:
+                "*"
+
+            value:
+
+              default:
+
+                type:
+                  com.org.projectmanagement.notificationservice.event.UserCreatedEvent
+
 
 eureka:
 
