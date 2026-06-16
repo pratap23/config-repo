@@ -1,54 +1,64 @@
 server:
   port: 8088
 
-
 spring:
+
   datasource:
     url: jdbc:postgresql://localhost:5432/notification_db
     username: postgres
     password: postgres
     driver-class-name: org.postgresql.Driver
 
+  # Uncomment later after Kafka testing
+  #
+  #  mail:
+  #    host: smtp.gmail.com
+  #    port: 587
+  #    username: yourmail@gmail.com
+  #    password: app-password
+  #    properties:
+  #      mail:
+  #        smtp:
+  #          auth: true
+  #          starttls:
+  #            enable: true
+
   jpa:
     hibernate:
-      ddl-auto:
-        update
+      ddl-auto: update
+
+    show-sql: true
 
   kafka:
-    bootstrap-servers:
-      localhost:9092
+
+    bootstrap-servers: localhost:9092
 
     consumer:
-      group-id:
-        notification
-      auto-offset-reset:
-        earliest
-      key-deserializer:
-        org.springframework.kafka.support.serializer.ErrorHandlingDeserializer
-      value-deserializer:
-        org.springframework.kafka.support.serializer.ErrorHandlingDeserializer
+
+      group-id: notification
+
+      auto-offset-reset: earliest
+
+      key-deserializer: org.springframework.kafka.support.serializer.ErrorHandlingDeserializer
+
+      value-deserializer: org.springframework.kafka.support.serializer.ErrorHandlingDeserializer
+
       properties:
-        spring:
-          deserializer:
-            value:
-              delegate:
-                class:
-                  org.springframework.kafka.support.serializer.JsonDeserializer
 
+        spring.deserializer.key.delegate.class: org.apache.kafka.common.serialization.StringDeserializer
 
-          json:
-            trusted:
-              packages:
-                "*"
+        spring.deserializer.value.delegate.class: org.springframework.kafka.support.serializer.JsonDeserializer
 
-            value:
-              default:
-                type:
-                  com.org.projectmanagement.notificationservice.event.UserCreatedEvent
+        spring.json.trusted.packages: "*"
 
+        spring.json.use.type.headers: false
+
+        spring.json.value.default.type: com.org.projectmanagement.notificationservice.event.UserCreatedEvent
 
 eureka:
+
   client:
+
     service-url:
-      defaultZone:
-        http://localhost:8761/eureka
+
+      defaultZone: http://localhost:8761/eureka
