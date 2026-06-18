@@ -3,7 +3,7 @@ server:
 
 
 jwt:
-  secret: my-secret-key-my-secret-key-my-secret-key
+  secret: my-super-secret-key-for-jwt-project
 
 spring:
   main:
