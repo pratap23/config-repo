@@ -59,6 +59,9 @@ spring:
 
 
 eureka:
+  instance:
+    prefer-ip-address: true
+    hostname: localhost
   client:
     service-url:
       defaultZone:
