@@ -9,6 +9,10 @@ spring:
     password: postgres
     driver-class-name: org.postgresql.Driver
 
+  data:
+    mongodb:
+      uri: mongodb://admin:admin@localhost:27017/notification_db
+  
   # Uncomment later after Kafka testing
   #
   #  mail:
