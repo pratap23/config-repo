@@ -11,7 +11,7 @@ spring:
 
   data:
     mongodb:
-      uri: mongodb://admin:admin@localhost:27017/notification_db
+      uri: mongodb://admin:admin@localhost:27017/notification_db?authSource=admin
   
   # Uncomment later after Kafka testing
   #
