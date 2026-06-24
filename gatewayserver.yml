@@ -66,8 +66,8 @@ eureka:
     hostname: localhost
   client:
     service-url:
-      defaultZone:
-        http://localhost:8761/eureka
+      defaultZone: http://serviceregistry:8761/eureka
+#        http://localhost:8761/eureka
 
 
 management:
