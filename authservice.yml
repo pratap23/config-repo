@@ -20,7 +20,7 @@ jwt:
 eureka:
   instance:
     prefer-ip-address: true
-    hostname: localhost
+
   client:
     service-url:
       defaultZone: http://serviceregistry:8761/eureka
