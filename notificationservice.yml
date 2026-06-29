@@ -4,13 +4,15 @@ server:
 spring:
 
   datasource:
-    url: jdbc:postgresql://localhost:5432/notification_db
+    #    url: jdbc:postgresql://localhost:5432/notification_db
+    url: jdbc:postgresql://postgres:5432/notification_db
     username: postgres
     password: postgres
     driver-class-name: org.postgresql.Driver
 
   data:
     mongodb:
+      #      uri: mongodb://admin:admin@mongodb:27017/notification_db?authSource=admin
       uri: mongodb://admin:admin@mongodb:27017/notification_db?authSource=admin
   
   # Uncomment later after Kafka testing
