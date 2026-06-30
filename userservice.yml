@@ -129,15 +129,33 @@ eureka:
 # ==========================
 
 management:
+
   endpoints:
     web:
       exposure:
         include: "*"
 
-
   endpoint:
     health:
       show-details: always
+
+  metrics:
+    tags:
+      application: ${spring.application.name}
+
+  prometheus:
+    metrics:
+      export:
+        enabled: true
+
+  tracing:
+    sampling:
+      probability: 1.0
+
+
+
+  zipkin:
+    base-url: http://zipkin:9411
 
 
 
